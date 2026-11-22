@@ -22,6 +22,39 @@
 - [Первый полный прогон](reports/check-1.log): `PASS: counter, persistence, outage, backup and restore verified`.
 - [Второй полный прогон](reports/check-2.log): `PASS: counter, persistence, outage, backup and restore verified`.
 
+## Ручная проверка Redis
+
+Выполнены следующие команды (порт 8080):
+
+```sh
+curl -fsS http://127.0.0.1:8080/
+curl -fsS -X POST http://127.0.0.1:8080/increment
+curl -fsS http://127.0.0.1:8080/
+docker compose down
+docker compose up -d --wait --wait-timeout 120
+curl -fsS http://127.0.0.1:8080/
+```
+
+Получены значения 0, 1, 1. После удаления и создания контейнеров осталось 1.
+
+```sh
+docker compose stop redis
+curl -sS -w '\nHTTP %{http_code}\n' http://127.0.0.1:8080/healthz
+curl -sS -w '\nHTTP %{http_code}\n' http://127.0.0.1:8080/readyz
+curl -sS -X POST -w '\nHTTP %{http_code}\n' http://127.0.0.1:8080/increment
+```
+
+Получены HTTP-коды 200, 503, 503.
+
+```sh
+docker compose start redis
+# После готовности Redis:
+curl -fsS http://127.0.0.1:8080/
+curl -fsS -X POST http://127.0.0.1:8080/increment
+```
+
+Получены значения 1 и 2. Контейнер приложения не перезапускался.
+
 ## Результаты двух полных прогонов
 
 | Проверка | Получено в обоих прогонах |
