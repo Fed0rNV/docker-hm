@@ -1,0 +1,149 @@
+Docker Compose version v5.7.0
+
+=== 4 points: single container ===
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 503B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.13-slim
+#2 DONE 2.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 94B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 94B done
+#4 DONE 0.0s
+
+#5 [1/5] FROM docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90
+#5 resolve docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90 done
+#5 DONE 0.0s
+
+#6 [3/5] COPY app/requirements.txt ./requirements.txt
+#6 CACHED
+
+#7 [2/5] WORKDIR /app
+#7 CACHED
+
+#8 [4/5] RUN pip install --no-cache-dir -r requirements.txt     && groupadd --gid 10001 app     && useradd --uid 10001 --gid app --no-create-home app     && mkdir -p /data     && chown app:app /data
+#8 CACHED
+
+#9 [5/5] COPY app/app.py ./app.py
+#9 CACHED
+
+#10 exporting to image
+#10 exporting layers done
+#10 exporting manifest sha256:d5fa2955a633a3db308f10c4c9a5ed5863d090b7937c5dad2f56d125e5e4ff4d done
+#10 exporting config sha256:cce9e8a7f50e04dbaad3ea68c89e8f66a46a0b4c38b0399cccdb283d1f6412f7 done
+#10 exporting attestation manifest sha256:a7a84230ed82decedd063e78810643fe8c0d5c5634c893f9cb1a141bf40b2fb5 done
+#10 exporting manifest list sha256:fbf6a8a17d64de7400b8bf1e83fb0bfdc38c4af524d11b2aed138c01ddda8b46 done
+#10 naming to docker.io/library/hwbasics-docker-basics-t52mz5:latest done
+#10 unpacking to docker.io/library/hwbasics-docker-basics-t52mz5:latest done
+#10 DONE 0.0s
+abcf50198d743866cd0588ef7dea1e0056ae70753602b7512f2697788b256207
+{"greeting": "Basics check", "count": 0, "hostname": "abcf50198d74", "storage": "sqlite"}
+{"greeting": "Basics check", "count": 1, "hostname": "abcf50198d74", "storage": "sqlite"}
+2026-11-22 15:38:30,890 listening port=8000 storage=sqlite
+2026-11-22 15:38:31,816 http 172.17.0.1 "GET /readyz HTTP/1.1" 200 -
+2026-11-22 15:38:31,829 http 172.17.0.1 "GET / HTTP/1.1" 200 -
+2026-11-22 15:38:31,915 http 172.17.0.1 "POST /increment HTTP/1.1" 200 -
+hwbasics-docker-basics-t52mz5
+
+=== 6 points: Compose and named volume ===
+ Image hwbasics-docker-basics-t52mz5-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 616B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 503B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.13-slim
+#3 DONE 0.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 94B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 94B done
+#5 DONE 0.0s
+
+#6 [1/5] FROM docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90
+#6 resolve docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90 done
+#6 DONE 0.0s
+
+#7 [4/5] RUN pip install --no-cache-dir -r requirements.txt     && groupadd --gid 10001 app     && useradd --uid 10001 --gid app --no-create-home app     && mkdir -p /data     && chown app:app /data
+#7 CACHED
+
+#8 [2/5] WORKDIR /app
+#8 CACHED
+
+#9 [3/5] COPY app/requirements.txt ./requirements.txt
+#9 CACHED
+
+#10 [5/5] COPY app/app.py ./app.py
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 exporting manifest sha256:c429818f26a0d33328202645b11dc2f40d5e92e34e506f8e8b2f44c6b3fb4cf3 done
+#11 exporting config sha256:3288417ab2879e0ab21c76272a2a9ac0338499cf12f1f97f5a4afe2e60a291c3 done
+#11 exporting attestation manifest sha256:b94a89082b77ca43174a769ab9a0a6251788f7f65c481c50ff0eb2d7e3cfa6ce done
+#11 exporting manifest list sha256:8b86f6d84b78407fe902e76d36f320f6f2b9c6b659c5ce94e0a7c978cae06f9c done
+#11 naming to docker.io/library/hwbasics-docker-basics-t52mz5-app:latest done
+#11 unpacking to docker.io/library/hwbasics-docker-basics-t52mz5-app:latest done
+#11 DONE 0.0s
+
+#12 resolving provenance for metadata file
+#12 DONE 0.0s
+ Image hwbasics-docker-basics-t52mz5-app Built 
+ Network hwbasics-docker-basics-t52mz5_default Creating 
+ Network hwbasics-docker-basics-t52mz5_default Creating 
+ Volume hwbasics-docker-basics-t52mz5_sqlite-data Creating 
+ Volume hwbasics-docker-basics-t52mz5_sqlite-data Creating 
+ Volume hwbasics-docker-basics-t52mz5_sqlite-data Created 
+ Volume hwbasics-docker-basics-t52mz5_sqlite-data Created 
+ Network hwbasics-docker-basics-t52mz5_default Created 
+ Network hwbasics-docker-basics-t52mz5_default Created 
+ Container hwbasics-docker-basics-t52mz5-app-1 Creating 
+ Container hwbasics-docker-basics-t52mz5-app-1 Created 
+ Container hwbasics-docker-basics-t52mz5-app-1 Starting 
+ Container hwbasics-docker-basics-t52mz5-app-1 Started 
+ Container hwbasics-docker-basics-t52mz5-app-1 Waiting 
+ Container hwbasics-docker-basics-t52mz5-app-1 Healthy 
+{"greeting": "Basics check", "count": 1, "hostname": "141bba24b131", "storage": "sqlite"}
+ Container hwbasics-docker-basics-t52mz5-app-1 Stopping 
+ Container hwbasics-docker-basics-t52mz5-app-1 Stopped 
+ Container hwbasics-docker-basics-t52mz5-app-1 Removing 
+ Container hwbasics-docker-basics-t52mz5-app-1 Removed 
+ Network hwbasics-docker-basics-t52mz5_default Removing 
+ Network hwbasics-docker-basics-t52mz5_default Removed 
+ Network hwbasics-docker-basics-t52mz5_default Creating 
+ Network hwbasics-docker-basics-t52mz5_default Creating 
+ Network hwbasics-docker-basics-t52mz5_default Created 
+ Network hwbasics-docker-basics-t52mz5_default Created 
+ Container hwbasics-docker-basics-t52mz5-app-1 Creating 
+ Container hwbasics-docker-basics-t52mz5-app-1 Created 
+ Container hwbasics-docker-basics-t52mz5-app-1 Starting 
+ Container hwbasics-docker-basics-t52mz5-app-1 Started 
+ Container hwbasics-docker-basics-t52mz5-app-1 Waiting 
+ Container hwbasics-docker-basics-t52mz5-app-1 Healthy 
+{"greeting": "Basics check", "count": 1, "hostname": "d311fd35da97", "storage": "sqlite"}
+app-1  | 2026-11-22 15:38:49,077 listening port=8000 storage=sqlite
+app-1  | 2026-11-22 15:38:54,037 http 127.0.0.1 "GET /readyz HTTP/1.1" 200 -
+app-1  | 2026-11-22 15:38:54,547 http 172.19.0.1 "GET / HTTP/1.1" 200 -
+
+PASS: levels 4 and 6
+ Container hwbasics-docker-basics-t52mz5-app-1 Stopping 
+ Container hwbasics-docker-basics-t52mz5-app-1 Stopped 
+ Container hwbasics-docker-basics-t52mz5-app-1 Removing 
+ Container hwbasics-docker-basics-t52mz5-app-1 Removed 
+ Network hwbasics-docker-basics-t52mz5_default Removing 
+ Volume hwbasics-docker-basics-t52mz5_sqlite-data Removing 
+ Volume hwbasics-docker-basics-t52mz5_sqlite-data Removed 
+ Network hwbasics-docker-basics-t52mz5_default Removed 

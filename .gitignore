@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.pyc
+reports/*.tar
+reports/*.tmp
+.DS_Store

@@ -1,0 +1,310 @@
+
+=== prerequisites ===
+Docker Compose version v5.7.0
+
+=== fresh-project ===
+ Image hwcheck-docker-hw-8dzkwq-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 606B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 503B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.13-slim
+#3 DONE 0.8s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 94B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 94B done
+#5 DONE 0.0s
+
+#6 [1/5] FROM docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90
+#6 resolve docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90 done
+#6 DONE 0.0s
+
+#7 [3/5] COPY app/requirements.txt ./requirements.txt
+#7 CACHED
+
+#8 [4/5] RUN pip install --no-cache-dir -r requirements.txt     && groupadd --gid 10001 app     && useradd --uid 10001 --gid app --no-create-home app     && mkdir -p /data     && chown app:app /data
+#8 CACHED
+
+#9 [2/5] WORKDIR /app
+#9 CACHED
+
+#10 [5/5] COPY app/app.py ./app.py
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 exporting manifest sha256:e08cf6bfa67277294f1425092718a1c671bea1d1faa2ce18680ca420118dba50 done
+#11 exporting config sha256:79d059fc79458f523c1be2dc9e4cde3ffec1c8285504f27db1cb0a0c91ee35c3 done
+#11 exporting attestation manifest sha256:df379391539e62bc4d97328057aef3a9a42d04f6c4994da79afa10d46791e9bd done
+#11 exporting manifest list sha256:9f15e7b6f8fe11d1d4023622e37b463e5d30ac3c7f40a3754793fc1f6f18583c done
+#11 naming to docker.io/library/hwcheck-docker-hw-8dzkwq-app:latest done
+#11 unpacking to docker.io/library/hwcheck-docker-hw-8dzkwq-app:latest done
+#11 DONE 0.0s
+
+#12 resolving provenance for metadata file
+#12 DONE 0.0s
+ Image hwcheck-docker-hw-8dzkwq-app Built 
+ Network hwcheck-docker-hw-8dzkwq_default Creating 
+ Network hwcheck-docker-hw-8dzkwq_default Creating 
+ Volume hwcheck-docker-hw-8dzkwq_redis-data Creating 
+ Volume hwcheck-docker-hw-8dzkwq_redis-data Creating 
+ Volume hwcheck-docker-hw-8dzkwq_redis-data Created 
+ Volume hwcheck-docker-hw-8dzkwq_redis-data Created 
+ Network hwcheck-docker-hw-8dzkwq_default Created 
+ Network hwcheck-docker-hw-8dzkwq_default Created 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Creating 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Created 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Creating 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Created 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Starting 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Started 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Waiting 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Healthy 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Starting 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Started 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Waiting 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Waiting 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Healthy 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Healthy 
+GET / -> 200 {"greeting": "Docker homework check", "count": 0, "hostname": "5f6b981b5b3f", "storage": "redis"}
+
+=== increments ===
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 1, "hostname": "5f6b981b5b3f", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 2, "hostname": "5f6b981b5b3f", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 3, "hostname": "5f6b981b5b3f", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 4, "hostname": "5f6b981b5b3f", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 5, "hostname": "5f6b981b5b3f", "storage": "redis"}
+
+=== process-restrictions ===
+UID: 10001
+read_only memory_bytes nano_cpus: true 268435456 1000000000
+
+=== recreate-app ===
+ Container hwcheck-docker-hw-8dzkwq-app-1 Recreate 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Recreated 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Starting 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Started 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Waiting 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Healthy 
+GET / -> 200 {"greeting": "Docker homework check", "count": 5, "hostname": "938c5d1330e4", "storage": "redis"}
+
+=== down-up-persistence ===
+ Container hwcheck-docker-hw-8dzkwq-app-1 Stopping 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Stopped 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Removing 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Removed 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Stopping 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Stopped 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Removing 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Removed 
+ Network hwcheck-docker-hw-8dzkwq_default Removing 
+ Network hwcheck-docker-hw-8dzkwq_default Removed 
+ Network hwcheck-docker-hw-8dzkwq_default Creating 
+ Network hwcheck-docker-hw-8dzkwq_default Creating 
+ Network hwcheck-docker-hw-8dzkwq_default Created 
+ Network hwcheck-docker-hw-8dzkwq_default Created 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Creating 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Created 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Creating 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Created 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Starting 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Started 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Waiting 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Healthy 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Starting 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Started 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Waiting 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Waiting 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Healthy 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Healthy 
+GET / -> 200 {"greeting": "Docker homework check", "count": 5, "hostname": "e3e4c4ecaa54", "storage": "redis"}
+
+=== redis-outage ===
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Stopping 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Stopped 
+GET /healthz -> 200 {"status": "alive"}
+GET /readyz -> 503 {"error": "storage_unavailable"}
+GET / -> 503 {"error": "storage_unavailable"}
+POST /increment -> 503 {"error": "storage_unavailable"}
+
+=== redis-recovery ===
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Starting 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Started 
+GET / -> 200 {"greeting": "Docker homework check", "count": 5, "hostname": "e3e4c4ecaa54", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 6, "hostname": "e3e4c4ecaa54", "storage": "redis"}
+app-1    | 2026-11-22 15:39:43,426 listening port=8000 storage=redis
+app-1    | 2026-11-22 15:39:48,264 http 127.0.0.1 "GET /readyz HTTP/1.1" 200 -
+app-1    | 2026-11-22 15:39:48,774 http 172.19.0.1 "GET / HTTP/1.1" 200 -
+app-1    | 2026-11-22 15:39:49,081 http 172.19.0.1 "GET /healthz HTTP/1.1" 200 -
+app-1    | 2026-11-22 15:39:49,098 storage_unavailable: ConnectionError
+app-1    | 2026-11-22 15:39:49,098 http 172.19.0.1 "GET /readyz HTTP/1.1" 503 -
+app-1    | 2026-11-22 15:39:49,112 storage_unavailable: ConnectionError
+app-1    | 2026-11-22 15:39:49,112 http 172.19.0.1 "GET / HTTP/1.1" 503 -
+app-1    | 2026-11-22 15:39:49,127 storage_unavailable: ConnectionError
+redis-1  | 1:C 22 Nov 2026 15:39:38.132 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 22 Nov 2026 15:39:38.132 * Redis version=7.4.12, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-1  | 1:C 22 Nov 2026 15:39:38.132 * Configuration loaded
+redis-1  | 1:M 22 Nov 2026 15:39:38.132 * monotonic clock: POSIX clock_gettime
+app-1    | 2026-11-22 15:39:49,127 http 172.19.0.1 "POST /increment HTTP/1.1" 503 -
+app-1    | 2026-11-22 15:39:49,248 http 172.19.0.1 "GET /readyz HTTP/1.1" 200 -
+app-1    | 2026-11-22 15:39:49,310 http 172.19.0.1 "GET / HTTP/1.1" 200 -
+redis-1  | 1:M 22 Nov 2026 15:39:38.133 * Running mode=standalone, port=6379.
+redis-1  | 1:M 22 Nov 2026 15:39:38.133 * Server initialized
+app-1    | 2026-11-22 15:39:49,423 http 172.19.0.1 "POST /increment HTTP/1.1" 200 -
+redis-1  | 1:M 22 Nov 2026 15:39:38.133 * Reading RDB base file on AOF loading...
+redis-1  | 1:M 22 Nov 2026 15:39:38.133 * Loading RDB produced by version 7.4.12
+redis-1  | 1:M 22 Nov 2026 15:39:38.133 * RDB age 31 seconds
+redis-1  | 1:M 22 Nov 2026 15:39:38.133 * RDB memory usage when created 0.94 Mb
+redis-1  | 1:M 22 Nov 2026 15:39:38.133 * RDB is base AOF
+redis-1  | 1:M 22 Nov 2026 15:39:38.133 * Done loading RDB, keys loaded: 0, keys expired: 0.
+redis-1  | 1:M 22 Nov 2026 15:39:38.133 * DB loaded from base file appendonly.aof.1.base.rdb: 0.000 seconds
+redis-1  | 1:M 22 Nov 2026 15:39:38.133 * DB loaded from incr file appendonly.aof.1.incr.aof: 0.000 seconds
+redis-1  | 1:M 22 Nov 2026 15:39:38.133 * DB loaded from append only file: 0.001 seconds
+redis-1  | 1:M 22 Nov 2026 15:39:38.133 * Opening AOF incr file appendonly.aof.1.incr.aof on server start
+redis-1  | 1:M 22 Nov 2026 15:39:38.133 * Ready to accept connections tcp
+redis-1  | 1:signal-handler (1795361988) Received SIGTERM scheduling shutdown...
+redis-1  | 1:M 22 Nov 2026 15:39:49.002 * User requested shutdown...
+redis-1  | 1:M 22 Nov 2026 15:39:49.002 * Calling fsync() on the AOF file.
+redis-1  | 1:M 22 Nov 2026 15:39:49.002 * Saving the final RDB snapshot before exiting.
+redis-1  | 1:M 22 Nov 2026 15:39:49.003 * DB saved on disk
+redis-1  | 1:M 22 Nov 2026 15:39:49.003 # Redis is now ready to exit, bye bye...
+redis-1  | 1:C 22 Nov 2026 15:39:49.233 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 22 Nov 2026 15:39:49.233 * Redis version=7.4.12, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-1  | 1:C 22 Nov 2026 15:39:49.233 * Configuration loaded
+redis-1  | 1:M 22 Nov 2026 15:39:49.234 * monotonic clock: POSIX clock_gettime
+redis-1  | 1:M 22 Nov 2026 15:39:49.234 * Running mode=standalone, port=6379.
+redis-1  | 1:M 22 Nov 2026 15:39:49.234 * Server initialized
+redis-1  | 1:M 22 Nov 2026 15:39:49.235 * Reading RDB base file on AOF loading...
+redis-1  | 1:M 22 Nov 2026 15:39:49.235 * Loading RDB produced by version 7.4.12
+redis-1  | 1:M 22 Nov 2026 15:39:49.235 * RDB age 42 seconds
+redis-1  | 1:M 22 Nov 2026 15:39:49.235 * RDB memory usage when created 0.94 Mb
+redis-1  | 1:M 22 Nov 2026 15:39:49.235 * RDB is base AOF
+redis-1  | 1:M 22 Nov 2026 15:39:49.235 * Done loading RDB, keys loaded: 0, keys expired: 0.
+redis-1  | 1:M 22 Nov 2026 15:39:49.235 * DB loaded from base file appendonly.aof.1.base.rdb: 0.000 seconds
+redis-1  | 1:M 22 Nov 2026 15:39:49.235 * DB loaded from incr file appendonly.aof.1.incr.aof: 0.000 seconds
+redis-1  | 1:M 22 Nov 2026 15:39:49.235 * DB loaded from append only file: 0.000 seconds
+redis-1  | 1:M 22 Nov 2026 15:39:49.235 * Opening AOF incr file appendonly.aof.1.incr.aof on server start
+redis-1  | 1:M 22 Nov 2026 15:39:49.235 * Ready to accept connections tcp
+
+=== consistent-backup ===
+ Container hwcheck-docker-hw-8dzkwq-app-1 Stopping 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Stopped 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Stopping 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Stopped 
+ Container hwcheck-docker-hw-8dzkwq-redis-run-b1aadd258216 Creating 
+ Container hwcheck-docker-hw-8dzkwq-redis-run-b1aadd258216 Created 
+Backup: /Users/OMENpc-2/Documents/Codex/2026-11-22/new-chat/work/docker-hw/reports/backup-hwcheck-docker-hw-8dzkwq.tar
+
+=== remove-source-volumes ===
+ Container hwcheck-docker-hw-8dzkwq-app-1 Stopping 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Stopped 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Removing 
+ Container hwcheck-docker-hw-8dzkwq-app-1 Removed 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Stopping 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Stopped 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Removing 
+ Container hwcheck-docker-hw-8dzkwq-redis-1 Removed 
+ Network hwcheck-docker-hw-8dzkwq_default Removing 
+ Volume hwcheck-docker-hw-8dzkwq_redis-data Removing 
+ Volume hwcheck-docker-hw-8dzkwq_redis-data Removed 
+ Network hwcheck-docker-hw-8dzkwq_default Removed 
+
+=== restore-into-new-project ===
+ Volume hwrestore-docker-hw-8dzkwq_redis-data Creating 
+ Volume hwrestore-docker-hw-8dzkwq_redis-data Creating 
+ Network hwrestore-docker-hw-8dzkwq_default Creating 
+ Network hwrestore-docker-hw-8dzkwq_default Creating 
+ Volume hwrestore-docker-hw-8dzkwq_redis-data Created 
+ Volume hwrestore-docker-hw-8dzkwq_redis-data Created 
+ Network hwrestore-docker-hw-8dzkwq_default Created 
+ Network hwrestore-docker-hw-8dzkwq_default Created 
+ Container hwrestore-docker-hw-8dzkwq-redis-run-c69e1f448a2f Creating 
+ Container hwrestore-docker-hw-8dzkwq-redis-run-c69e1f448a2f Created 
+ Image hwrestore-docker-hw-8dzkwq-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 610B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 503B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.13-slim
+#3 DONE 0.7s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 94B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 94B done
+#5 DONE 0.0s
+
+#6 [1/5] FROM docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90
+#6 resolve docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90 done
+#6 DONE 0.0s
+
+#7 [2/5] WORKDIR /app
+#7 CACHED
+
+#8 [3/5] COPY app/requirements.txt ./requirements.txt
+#8 CACHED
+
+#9 [4/5] RUN pip install --no-cache-dir -r requirements.txt     && groupadd --gid 10001 app     && useradd --uid 10001 --gid app --no-create-home app     && mkdir -p /data     && chown app:app /data
+#9 CACHED
+
+#10 [5/5] COPY app/app.py ./app.py
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 exporting manifest sha256:7657244ae1059f25f652797ade278a10ef5bbbe4e86078a03f5c839acdd779eb done
+#11 exporting config sha256:7462d1d3507601edeba83d00ca2037ce51de16e2936e23e2d31444ffcd2a3921 done
+#11 exporting attestation manifest sha256:1d67de89559859a196b57ca1d88ce3f77c068df5114130f473800c7ba174042b done
+#11 exporting manifest list sha256:4af515275c5658f0d7387deef286740c6fc23af473979f8e4bf99318de23d1f9 done
+#11 naming to docker.io/library/hwrestore-docker-hw-8dzkwq-app:latest done
+#11 unpacking to docker.io/library/hwrestore-docker-hw-8dzkwq-app:latest done
+#11 DONE 0.0s
+
+#12 resolving provenance for metadata file
+#12 DONE 0.0s
+ Image hwrestore-docker-hw-8dzkwq-app Built 
+ Container hwrestore-docker-hw-8dzkwq-redis-1 Creating 
+ Container hwrestore-docker-hw-8dzkwq-redis-1 Created 
+ Container hwrestore-docker-hw-8dzkwq-app-1 Creating 
+ Container hwrestore-docker-hw-8dzkwq-app-1 Created 
+ Container hwrestore-docker-hw-8dzkwq-redis-1 Starting 
+ Container hwrestore-docker-hw-8dzkwq-redis-1 Started 
+ Container hwrestore-docker-hw-8dzkwq-redis-1 Waiting 
+ Container hwrestore-docker-hw-8dzkwq-redis-1 Healthy 
+ Container hwrestore-docker-hw-8dzkwq-app-1 Starting 
+ Container hwrestore-docker-hw-8dzkwq-app-1 Started 
+ Container hwrestore-docker-hw-8dzkwq-redis-1 Waiting 
+ Container hwrestore-docker-hw-8dzkwq-app-1 Waiting 
+ Container hwrestore-docker-hw-8dzkwq-redis-1 Healthy 
+ Container hwrestore-docker-hw-8dzkwq-app-1 Healthy 
+GET / -> 200 {"greeting": "Docker homework check", "count": 6, "hostname": "ce3aeecb988e", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 7, "hostname": "ce3aeecb988e", "storage": "redis"}
+
+=== finished ===
+PASS: counter, persistence, outage, backup and restore verified
+ Container hwrestore-docker-hw-8dzkwq-app-1 Stopping 
+ Container hwrestore-docker-hw-8dzkwq-app-1 Stopped 
+ Container hwrestore-docker-hw-8dzkwq-app-1 Removing 
+ Container hwrestore-docker-hw-8dzkwq-app-1 Removed 
+ Container hwrestore-docker-hw-8dzkwq-redis-1 Stopping 
+ Container hwrestore-docker-hw-8dzkwq-redis-1 Stopped 
+ Container hwrestore-docker-hw-8dzkwq-redis-1 Removing 
+ Container hwrestore-docker-hw-8dzkwq-redis-1 Removed 
+ Network hwrestore-docker-hw-8dzkwq_default Removing 
+ Volume hwrestore-docker-hw-8dzkwq_redis-data Removing 
+ Volume hwrestore-docker-hw-8dzkwq_redis-data Removed 
+ Network hwrestore-docker-hw-8dzkwq_default Removed 

@@ -1,0 +1,17 @@
+name: Docker homework checks
+on: [push, workflow_dispatch]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run levels 4 and 6 and two complete checks
+        run: ./scripts/run-all.sh
+      - name: Upload real check output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-homework-logs
+          path: reports/*.log
+          if-no-files-found: warn

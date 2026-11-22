@@ -1,0 +1,310 @@
+
+=== prerequisites ===
+Docker Compose version v5.7.0
+
+=== fresh-project ===
+ Image hwcheck-docker-hw-dmcuh6-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 606B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 503B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.13-slim
+#3 DONE 0.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 94B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 94B done
+#5 DONE 0.0s
+
+#6 [1/5] FROM docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90
+#6 resolve docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90 done
+#6 DONE 0.0s
+
+#7 [4/5] RUN pip install --no-cache-dir -r requirements.txt     && groupadd --gid 10001 app     && useradd --uid 10001 --gid app --no-create-home app     && mkdir -p /data     && chown app:app /data
+#7 CACHED
+
+#8 [3/5] COPY app/requirements.txt ./requirements.txt
+#8 CACHED
+
+#9 [2/5] WORKDIR /app
+#9 CACHED
+
+#10 [5/5] COPY app/app.py ./app.py
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 exporting manifest sha256:258371c57ac0e20fbcebb359fab344e2869f3ec4ee60c1ef33799ac50c647735 done
+#11 exporting config sha256:b4df5bf3170f33fa1a207c589dde2bdcd5ebe1c44369e91a1860ed9891c85b5c done
+#11 exporting attestation manifest sha256:122a650d383f4cf3eab4e6de91f05406b298a54a29ad8e4671c80625ebce42d0 done
+#11 exporting manifest list sha256:92586bb64991a890054e3f5087358a0bded85e29e24d1b32a24fd8c3213221b8 done
+#11 naming to docker.io/library/hwcheck-docker-hw-dmcuh6-app:latest done
+#11 unpacking to docker.io/library/hwcheck-docker-hw-dmcuh6-app:latest done
+#11 DONE 0.0s
+
+#12 resolving provenance for metadata file
+#12 DONE 0.0s
+ Image hwcheck-docker-hw-dmcuh6-app Built 
+ Volume hwcheck-docker-hw-dmcuh6_redis-data Creating 
+ Volume hwcheck-docker-hw-dmcuh6_redis-data Creating 
+ Network hwcheck-docker-hw-dmcuh6_default Creating 
+ Network hwcheck-docker-hw-dmcuh6_default Creating 
+ Volume hwcheck-docker-hw-dmcuh6_redis-data Created 
+ Volume hwcheck-docker-hw-dmcuh6_redis-data Created 
+ Network hwcheck-docker-hw-dmcuh6_default Created 
+ Network hwcheck-docker-hw-dmcuh6_default Created 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Creating 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Created 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Creating 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Created 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Starting 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Started 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Waiting 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Healthy 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Starting 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Started 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Waiting 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Waiting 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Healthy 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Healthy 
+GET / -> 200 {"greeting": "Docker homework check", "count": 0, "hostname": "413d43ebe892", "storage": "redis"}
+
+=== increments ===
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 1, "hostname": "413d43ebe892", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 2, "hostname": "413d43ebe892", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 3, "hostname": "413d43ebe892", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 4, "hostname": "413d43ebe892", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 5, "hostname": "413d43ebe892", "storage": "redis"}
+
+=== process-restrictions ===
+UID: 10001
+read_only memory_bytes nano_cpus: true 268435456 1000000000
+
+=== recreate-app ===
+ Container hwcheck-docker-hw-dmcuh6-app-1 Recreate 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Recreated 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Starting 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Started 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Waiting 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Healthy 
+GET / -> 200 {"greeting": "Docker homework check", "count": 5, "hostname": "9902eccb6268", "storage": "redis"}
+
+=== down-up-persistence ===
+ Container hwcheck-docker-hw-dmcuh6-app-1 Stopping 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Stopped 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Removing 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Removed 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Stopping 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Stopped 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Removing 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Removed 
+ Network hwcheck-docker-hw-dmcuh6_default Removing 
+ Network hwcheck-docker-hw-dmcuh6_default Removed 
+ Network hwcheck-docker-hw-dmcuh6_default Creating 
+ Network hwcheck-docker-hw-dmcuh6_default Creating 
+ Network hwcheck-docker-hw-dmcuh6_default Created 
+ Network hwcheck-docker-hw-dmcuh6_default Created 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Creating 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Created 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Creating 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Created 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Starting 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Started 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Waiting 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Healthy 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Starting 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Started 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Waiting 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Waiting 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Healthy 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Healthy 
+GET / -> 200 {"greeting": "Docker homework check", "count": 5, "hostname": "eb0b1504aa4f", "storage": "redis"}
+
+=== redis-outage ===
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Stopping 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Stopped 
+GET /healthz -> 200 {"status": "alive"}
+GET /readyz -> 503 {"error": "storage_unavailable"}
+GET / -> 503 {"error": "storage_unavailable"}
+POST /increment -> 503 {"error": "storage_unavailable"}
+
+=== redis-recovery ===
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Starting 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Started 
+GET / -> 200 {"greeting": "Docker homework check", "count": 5, "hostname": "eb0b1504aa4f", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 6, "hostname": "eb0b1504aa4f", "storage": "redis"}
+app-1    | 2026-11-22 15:41:00,579 listening port=8000 storage=redis
+redis-1  | 1:C 22 Nov 2026 15:40:55.279 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 22 Nov 2026 15:40:55.279 * Redis version=7.4.12, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-1  | 1:C 22 Nov 2026 15:40:55.279 * Configuration loaded
+redis-1  | 1:M 22 Nov 2026 15:40:55.279 * monotonic clock: POSIX clock_gettime
+redis-1  | 1:M 22 Nov 2026 15:40:55.280 * Running mode=standalone, port=6379.
+redis-1  | 1:M 22 Nov 2026 15:40:55.280 * Server initialized
+redis-1  | 1:M 22 Nov 2026 15:40:55.281 * Reading RDB base file on AOF loading...
+redis-1  | 1:M 22 Nov 2026 15:40:55.281 * Loading RDB produced by version 7.4.12
+redis-1  | 1:M 22 Nov 2026 15:40:55.281 * RDB age 31 seconds
+redis-1  | 1:M 22 Nov 2026 15:40:55.281 * RDB memory usage when created 0.94 Mb
+redis-1  | 1:M 22 Nov 2026 15:40:55.281 * RDB is base AOF
+redis-1  | 1:M 22 Nov 2026 15:40:55.281 * Done loading RDB, keys loaded: 0, keys expired: 0.
+redis-1  | 1:M 22 Nov 2026 15:40:55.281 * DB loaded from base file appendonly.aof.1.base.rdb: 0.001 seconds
+redis-1  | 1:M 22 Nov 2026 15:40:55.281 * DB loaded from incr file appendonly.aof.1.incr.aof: 0.000 seconds
+redis-1  | 1:M 22 Nov 2026 15:40:55.281 * DB loaded from append only file: 0.001 seconds
+redis-1  | 1:M 22 Nov 2026 15:40:55.281 * Opening AOF incr file appendonly.aof.1.incr.aof on server start
+redis-1  | 1:M 22 Nov 2026 15:40:55.281 * Ready to accept connections tcp
+redis-1  | 1:signal-handler (1795362066) Received SIGTERM scheduling shutdown...
+redis-1  | 1:M 22 Nov 2026 15:41:06.215 * User requested shutdown...
+redis-1  | 1:M 22 Nov 2026 15:41:06.215 * Calling fsync() on the AOF file.
+redis-1  | 1:M 22 Nov 2026 15:41:06.215 * Saving the final RDB snapshot before exiting.
+app-1    | 2026-11-22 15:41:05,412 http 127.0.0.1 "GET /readyz HTTP/1.1" 200 -
+app-1    | 2026-11-22 15:41:05,932 http 172.19.0.1 "GET / HTTP/1.1" 200 -
+redis-1  | 1:M 22 Nov 2026 15:41:06.217 * DB saved on disk
+redis-1  | 1:M 22 Nov 2026 15:41:06.217 # Redis is now ready to exit, bye bye...
+redis-1  | 1:C 22 Nov 2026 15:41:06.447 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 22 Nov 2026 15:41:06.447 * Redis version=7.4.12, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-1  | 1:C 22 Nov 2026 15:41:06.447 * Configuration loaded
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * monotonic clock: POSIX clock_gettime
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * Running mode=standalone, port=6379.
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * Server initialized
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * Reading RDB base file on AOF loading...
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * Loading RDB produced by version 7.4.12
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * RDB age 42 seconds
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * RDB memory usage when created 0.94 Mb
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * RDB is base AOF
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * Done loading RDB, keys loaded: 0, keys expired: 0.
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * DB loaded from base file appendonly.aof.1.base.rdb: 0.000 seconds
+app-1    | 2026-11-22 15:41:06,297 http 172.19.0.1 "GET /healthz HTTP/1.1" 200 -
+app-1    | 2026-11-22 15:41:06,313 storage_unavailable: ConnectionError
+app-1    | 2026-11-22 15:41:06,313 http 172.19.0.1 "GET /readyz HTTP/1.1" 503 -
+app-1    | 2026-11-22 15:41:06,327 storage_unavailable: ConnectionError
+app-1    | 2026-11-22 15:41:06,327 http 172.19.0.1 "GET / HTTP/1.1" 503 -
+app-1    | 2026-11-22 15:41:06,343 storage_unavailable: ConnectionError
+app-1    | 2026-11-22 15:41:06,343 http 172.19.0.1 "POST /increment HTTP/1.1" 503 -
+app-1    | 2026-11-22 15:41:06,461 http 172.19.0.1 "GET /readyz HTTP/1.1" 200 -
+app-1    | 2026-11-22 15:41:06,523 http 172.19.0.1 "GET / HTTP/1.1" 200 -
+app-1    | 2026-11-22 15:41:06,637 http 172.19.0.1 "POST /increment HTTP/1.1" 200 -
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * DB loaded from incr file appendonly.aof.1.incr.aof: 0.000 seconds
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * DB loaded from append only file: 0.000 seconds
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * Opening AOF incr file appendonly.aof.1.incr.aof on server start
+redis-1  | 1:M 22 Nov 2026 15:41:06.448 * Ready to accept connections tcp
+
+=== consistent-backup ===
+ Container hwcheck-docker-hw-dmcuh6-app-1 Stopping 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Stopped 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Stopping 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Stopped 
+ Container hwcheck-docker-hw-dmcuh6-redis-run-75f1cc6d9eab Creating 
+ Container hwcheck-docker-hw-dmcuh6-redis-run-75f1cc6d9eab Created 
+Backup: /Users/OMENpc-2/Documents/Codex/2026-11-22/new-chat/work/docker-hw/reports/backup-hwcheck-docker-hw-dmcuh6.tar
+
+=== remove-source-volumes ===
+ Container hwcheck-docker-hw-dmcuh6-app-1 Stopping 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Stopped 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Removing 
+ Container hwcheck-docker-hw-dmcuh6-app-1 Removed 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Stopping 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Stopped 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Removing 
+ Container hwcheck-docker-hw-dmcuh6-redis-1 Removed 
+ Volume hwcheck-docker-hw-dmcuh6_redis-data Removing 
+ Network hwcheck-docker-hw-dmcuh6_default Removing 
+ Volume hwcheck-docker-hw-dmcuh6_redis-data Removed 
+ Network hwcheck-docker-hw-dmcuh6_default Removed 
+
+=== restore-into-new-project ===
+ Volume hwrestore-docker-hw-dmcuh6_redis-data Creating 
+ Volume hwrestore-docker-hw-dmcuh6_redis-data Creating 
+ Network hwrestore-docker-hw-dmcuh6_default Creating 
+ Network hwrestore-docker-hw-dmcuh6_default Creating 
+ Volume hwrestore-docker-hw-dmcuh6_redis-data Created 
+ Volume hwrestore-docker-hw-dmcuh6_redis-data Created 
+ Network hwrestore-docker-hw-dmcuh6_default Created 
+ Network hwrestore-docker-hw-dmcuh6_default Created 
+ Container hwrestore-docker-hw-dmcuh6-redis-run-6b3568a23d34 Creating 
+ Container hwrestore-docker-hw-dmcuh6-redis-run-6b3568a23d34 Created 
+ Image hwrestore-docker-hw-dmcuh6-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 610B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 503B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.13-slim
+#3 DONE 1.6s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 94B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 94B done
+#5 DONE 0.0s
+
+#6 [1/5] FROM docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90
+#6 resolve docker.io/library/python:3.13-slim@sha256:e48f59cdba69a3cbd9ed2cf0f348d90d45a8d350d98134cf1070bc106ee9ed90 done
+#6 DONE 0.0s
+
+#7 [2/5] WORKDIR /app
+#7 CACHED
+
+#8 [3/5] COPY app/requirements.txt ./requirements.txt
+#8 CACHED
+
+#9 [4/5] RUN pip install --no-cache-dir -r requirements.txt     && groupadd --gid 10001 app     && useradd --uid 10001 --gid app --no-create-home app     && mkdir -p /data     && chown app:app /data
+#9 CACHED
+
+#10 [5/5] COPY app/app.py ./app.py
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 exporting manifest sha256:c8692d5c6f71060eaded4ab78b750792f302005f12b68e27e0ba1dbfce7e8a0a done
+#11 exporting config sha256:f34743db0311985ac222399b35f7af60abc3ce23f3523670bb2f7b0512ada771 done
+#11 exporting attestation manifest sha256:032d24718d89f7907c57cd1a7fb8e551e64f7889a7e982dd29428cd294bf16f5 done
+#11 exporting manifest list sha256:1115be995a74197c35474fd8e0634ba72d33f62285f8f6c3b8ce2ebf18c819ae done
+#11 naming to docker.io/library/hwrestore-docker-hw-dmcuh6-app:latest done
+#11 unpacking to docker.io/library/hwrestore-docker-hw-dmcuh6-app:latest done
+#11 DONE 0.0s
+
+#12 resolving provenance for metadata file
+#12 DONE 0.0s
+ Image hwrestore-docker-hw-dmcuh6-app Built 
+ Container hwrestore-docker-hw-dmcuh6-redis-1 Creating 
+ Container hwrestore-docker-hw-dmcuh6-redis-1 Created 
+ Container hwrestore-docker-hw-dmcuh6-app-1 Creating 
+ Container hwrestore-docker-hw-dmcuh6-app-1 Created 
+ Container hwrestore-docker-hw-dmcuh6-redis-1 Starting 
+ Container hwrestore-docker-hw-dmcuh6-redis-1 Started 
+ Container hwrestore-docker-hw-dmcuh6-redis-1 Waiting 
+ Container hwrestore-docker-hw-dmcuh6-redis-1 Healthy 
+ Container hwrestore-docker-hw-dmcuh6-app-1 Starting 
+ Container hwrestore-docker-hw-dmcuh6-app-1 Started 
+ Container hwrestore-docker-hw-dmcuh6-app-1 Waiting 
+ Container hwrestore-docker-hw-dmcuh6-redis-1 Waiting 
+ Container hwrestore-docker-hw-dmcuh6-redis-1 Healthy 
+ Container hwrestore-docker-hw-dmcuh6-app-1 Healthy 
+GET / -> 200 {"greeting": "Docker homework check", "count": 6, "hostname": "35b38dca83d0", "storage": "redis"}
+POST /increment -> 200 {"greeting": "Docker homework check", "count": 7, "hostname": "35b38dca83d0", "storage": "redis"}
+
+=== finished ===
+PASS: counter, persistence, outage, backup and restore verified
+ Container hwrestore-docker-hw-dmcuh6-app-1 Stopping 
+ Container hwrestore-docker-hw-dmcuh6-app-1 Stopped 
+ Container hwrestore-docker-hw-dmcuh6-app-1 Removing 
+ Container hwrestore-docker-hw-dmcuh6-app-1 Removed 
+ Container hwrestore-docker-hw-dmcuh6-redis-1 Stopping 
+ Container hwrestore-docker-hw-dmcuh6-redis-1 Stopped 
+ Container hwrestore-docker-hw-dmcuh6-redis-1 Removing 
+ Container hwrestore-docker-hw-dmcuh6-redis-1 Removed 
+ Network hwrestore-docker-hw-dmcuh6_default Removing 
+ Volume hwrestore-docker-hw-dmcuh6_redis-data Removing 
+ Volume hwrestore-docker-hw-dmcuh6_redis-data Removed 
+ Network hwrestore-docker-hw-dmcuh6_default Removed 
