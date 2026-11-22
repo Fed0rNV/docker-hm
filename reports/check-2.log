@@ -201,7 +201,7 @@ redis-1  | 1:M 22 Nov 2026 15:41:06.448 * Ready to accept connections tcp
  Container hwcheck-docker-hw-dmcuh6-redis-1 Stopped 
  Container hwcheck-docker-hw-dmcuh6-redis-run-75f1cc6d9eab Creating 
  Container hwcheck-docker-hw-dmcuh6-redis-run-75f1cc6d9eab Created 
-Backup: /Users/OMENpc-2/Documents/Codex/2026-11-22/new-chat/work/docker-hw/reports/backup-hwcheck-docker-hw-dmcuh6.tar
+Backup: <project>/reports/backup-hwcheck-docker-hw-dmcuh6.tar
 
 === remove-source-volumes ===
  Container hwcheck-docker-hw-dmcuh6-app-1 Stopping 
